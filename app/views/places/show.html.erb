@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Business:</strong>
+  <%= @place.business %>
+</p>
+
+<p>
+  <strong>Area:</strong>
+  <%= @place.area %>
+</p>
+
+<%= link_to 'Edit', edit_place_path(@place) %> |
+<%= link_to 'Back', places_path %>
