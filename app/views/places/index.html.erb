@@ -24,7 +24,11 @@
 
 <br>
 
-<%= @result %>
+
+<% @locations.map do |p| %>
+  <%= "\n\n #{p["category"]}, #{p["name"]}" %>
+  <br/>
+<% end %>
 
 
 <%= link_to 'New Place', new_place_path %>

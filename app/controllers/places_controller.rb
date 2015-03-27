@@ -8,7 +8,10 @@ class PlacesController < ApplicationController
 
     oauth_access_token = ENV["ACCESS_TOKEN"]
     @rest = Koala::Facebook::API.new(oauth_access_token)
-    @result = @rest.api("/search?type=place&center=37.76,-122.427&distance=1000")
+    # @result = @rest.api("/search?type=place&center=37.76,-122.427&distance=1000")
+    json = @rest.api("/search?type=place&center=37.76,-122.427&distance=1000")
+    @locations = JSON.parse(json.to_json)["data"]
+
     # data = JSON.parse(@result)
     # places = data['']
     # my_fql_query = "SELECT name,description,geometry,latitude,longitude,checkin_count 
