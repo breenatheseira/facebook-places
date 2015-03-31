@@ -22,13 +22,22 @@
   </tbody>
 </table>
 
+<%= "@json" %>
 <br>
 
 
-<% @locations.map do |p| %>
-  <%= "\n\n #{p["category"]}, #{p["name"]}" %>
+
+<%= @data.map do |datum| %>
+  <%= "\n\n #{datum["category"]}|| #{datum["name"]} @ " %>
+  <%= "#{datum["location"]["street"]}, #{datum["location"]["city"]}, #{datum["location"]["zip"]}, " %>
+  <%= "#{datum["location"]["state"]}, #{datum["location"]["country"]}, " %>
+  <%= "|| #{datum["location"]["latitude"]}, #{datum["location"]["longitude"]}" %>
+  <%= "#{datum["id"]}" %>
   <br/>
-<% end %>
+<% end %>  
+
+<br/>
+
 
 
 <%= link_to 'New Place', new_place_path %>
