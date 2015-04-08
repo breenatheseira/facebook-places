@@ -17,13 +17,10 @@ class PlacesController < ApplicationController
     @data_search.map do |datum|
 
       @arr << "#{datum["id"]}"
-      @arr << "#{datum["name"]}"
-      @arr << "#{datum["location"]["street"]}"
-      @arr << "#{datum["location"]["city"]}"
-      @arr << "#{datum["location"]["state"]}"
 
     end
 
+    @pages_info = @rest.get_objects(@arr)
     
     # @json_page = @rest.api("/page_id?id=141260497802")
     # @data_page = JSON.parse(@json_search.to_json)["data"]
