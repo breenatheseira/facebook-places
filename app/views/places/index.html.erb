@@ -30,8 +30,20 @@
 <%= "@arr" %>
 <br/>
 
-<%= @pages_info.each do |p| %>
-  <%= p %>
+<% @pages_info.each do |p| %>
+  <% @page = p.second %>
+  <%= @page["id"] %> 
+  <%= @page["name"] %>
+  <%= @page["category"] %>
+  <%= @page["description"] %>
+  <%= @page["website"] %>
+  <%= @page["phone"] %>
+  <%= @page["location"]["street"] %>, <%= @page["location"]["city"] %>
+  <%= @page["likes"] %>
+  <%= @page["about"] %>
+  <%= @page["link"] %>
+
+  <br/>
   <br/>
 <% end %>
 
