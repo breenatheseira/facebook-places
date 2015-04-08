@@ -25,12 +25,11 @@
 <%= "@json" %>
 <br>
 
-<%= @arr %>
+<%= "@data_page" %>
 
-<%= @data.map do |datum| %>
-  <%= "#{datum["id"]}" %>
-  <br/>
-<% end %>  
+<%= "@arr" %>
+<br/>
+<%= @place = @rest.get_object("141260497802") %>
 
 <br/>
 
