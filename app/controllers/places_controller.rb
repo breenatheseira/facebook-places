@@ -10,7 +10,14 @@ class PlacesController < ApplicationController
     @rest = Koala::Facebook::API.new(oauth_access_token)
     # @result = @rest.api("/search?type=place&center=37.76,-122.427&distance=1000")
     @json = @rest.api("/search?type=place&center=37.76,-122.427&distance=1000")
-    @data = JSON.parse(@json.to_json)["data"]
+    @data = JSON.parse(@json.to_json)["data"]   
+
+    @arr = Array.new
+
+    @data.map do |id|
+      @arr << "#{id["id"]}"
+    end
+
     # @location = @data.map { |datum| datum['location'] }
 
     # data = JSON.parse(@result)

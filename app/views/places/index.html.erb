@@ -25,19 +25,13 @@
 <%= "@json" %>
 <br>
 
-
+<%= @arr %>
 
 <%= @data.map do |datum| %>
-  <%= "\n\n #{datum["category"]}|| #{datum["name"]} @ " %>
-  <%= "#{datum["location"]["street"]}, #{datum["location"]["city"]}, #{datum["location"]["zip"]}, " %>
-  <%= "#{datum["location"]["state"]}, #{datum["location"]["country"]}, " %>
-  <%= "|| #{datum["location"]["latitude"]}, #{datum["location"]["longitude"]}" %>
   <%= "#{datum["id"]}" %>
   <br/>
 <% end %>  
 
 <br/>
-
-
 
 <%= link_to 'New Place', new_place_path %>
