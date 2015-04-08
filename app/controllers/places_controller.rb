@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
     @json_search = @rest.api("/search?type=place&center=37.76,-122.427&distance=1000")
     @data_search = JSON.parse(@json_search.to_json)["data"]   
 
-    @arr = Array.new
+    @arr = Array.new    
 
     @data_search.map do |datum|
 
