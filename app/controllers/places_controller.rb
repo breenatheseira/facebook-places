@@ -21,17 +21,29 @@ class PlacesController < ApplicationController
     end
 
     @pages_info = @rest.get_objects(@arr)
-    
-    # @json_page = @rest.api("/page_id?id=141260497802")
-    # @data_page = JSON.parse(@json_search.to_json)["data"]
 
-    # @location = @data.map { |datum| datum['location'] }
+    @loop = Array.new
+    @loop << "["
+    @pages_info.each do |p| 
+      @page = p.last
+      
+      @loop << ActiveSupport::JSON.encode({
+                id: @page["id"],
+                name: @page["name"],
+                category: @page["category"],
+                description: @page["description"],
+                about: @page["about"],
+                likes: @page["likes"].to_s,
+                website: @page["website"],
+                phone: @page["phone"],
+                link: @page["link"],
+                address: "#{@page["name"]},  #{@page["location"]["street"]}, #{@page["location"]["zip"]}  #{@page["location"]["state"]}, #{@page["location"]["country"]}"
+                })
 
-    # data = JSON.parse(@result)
-    # places = data['']
-    # my_fql_query = "SELECT name,description,geometry,latitude,longitude,checkin_count 
-    #                 FROM place WHERE page_id=120176408032373"
-    # @rest.fql_query(my_fql_query)    
+      @loop << ","
+    end
+    @loop.pop
+    @loop << "]"
   end
 
   # GET /places/1
