@@ -6,7 +6,12 @@ class PlacesController < ApplicationController
     oauth_access_token = ENV["ACCESS_TOKEN"]
     @rest = Koala::Facebook::API.new(oauth_access_token)
 
-    @json_search = @rest.api("/search?type=place&center=37.76,-122.427&distance=1000")
+    lat = params[:lat]
+    lng = params[:long]
+    distance = params[:distance]
+
+    @query = "/search?type=place&center=" + lat + "," + lng + "&distance=" + distance
+    @json_search = @rest.api("#{@query}")
     @data_search = JSON.parse(@json_search.to_json)["data"]   
 
     @arr = Array.new    
@@ -24,7 +29,7 @@ class PlacesController < ApplicationController
     @pages_info.each do |p| 
       @page = p.last
       
-      if @page["category"] == "Restaurant/cafe" 
+      if @page["category"] == "Restaurant/cafe"
 
         @loop << ActiveSupport::JSON.encode({
                   id: @page["id"],
