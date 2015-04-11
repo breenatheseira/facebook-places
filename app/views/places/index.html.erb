@@ -1,6 +1,5 @@
 <h1>Listing places</h1>
 
-<br/>
 <textarea id="txt" class='txtarea' style="display:none">
 <% @loop.each do |l| %>
   <%= l.gsub('null', '"0"') %>
@@ -9,8 +8,6 @@
 </textarea>
 <button class='gen_btn'>Generate File</button>
 <br/>
-
-<%= link_to 'New Place', new_place_path %>
 
 <script type = "text/javascript">
 $(document).ready(function(){
