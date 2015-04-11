@@ -1,1 +1,13 @@
 <h1>Search Pages</h1>
+
+<%= form_tag({:controller => "places", :action =>"index"}, method: :post) do %>
+Latitude: <%= text_field_tag :lat %>
+<br/>
+Longitude: <%= text_field_tag :long %>
+<br/>
+Distance: <%= text_field_tag :distance %>
+<br/>
+Category: <%= text_field_tag :category %>
+<br/>
+<%= submit_tag "Submit" %>
+<% end %>
