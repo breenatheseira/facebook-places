@@ -24,20 +24,23 @@ class PlacesController < ApplicationController
     @pages_info.each do |p| 
       @page = p.last
       
-      @loop << ActiveSupport::JSON.encode({
-                id: @page["id"],
-                name: @page["name"],
-                category: @page["category"],
-                description: @page["description"],
-                about: @page["about"],
-                likes: @page["likes"].to_s,
-                website: @page["website"],
-                phone: @page["phone"],
-                link: @page["link"],
-                address: "#{@page["name"]},  #{@page["location"]["street"]}, #{@page["location"]["zip"]}  #{@page["location"]["state"]}, #{@page["location"]["country"]}"
-                })
+      if @page["category"] == "Restaurant/cafe" 
 
-      @loop << ","
+        @loop << ActiveSupport::JSON.encode({
+                  id: @page["id"],
+                  name: @page["name"],
+                  category: @page["category"],
+                  description: @page["description"],
+                  about: @page["about"],
+                  likes: @page["likes"].to_s,
+                  website: @page["website"],
+                  phone: @page["phone"],
+                  link: @page["link"],
+                  address: "#{@page["name"]},  #{@page["location"]["street"]}, #{@page["location"]["zip"]}  #{@page["location"]["state"]}, #{@page["location"]["country"]}"
+                  })
+
+        @loop << ","
+      end
     end
     @loop.pop
     @loop << "]"
